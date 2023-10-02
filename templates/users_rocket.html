@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %} Игроки {% endblock %}
+{% block account_tab %}  <h4 class="active">Вы авторизованы как <strong class="h2 text-success">{{ session['username'] }}</strong></h4>{% endblock %}
+
+{% block content %}
+    <div class="jumbotron container">
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+              <div class="row">
+                  <div class="col-md-6">
+                      <p> Ваш логин <strong>{{ user.login }}</strong></p>
+                  </div>
+                  <div class="col-md-6">
+                      <p> Ваш ранг в Dota2 : <strong>{{ user.dota2 }}</strong></p>
+                      <p> Ваш ранг в CS:GO : <strong>{{ user.csgo }}</strong></p>
+                      <p> Ваш ранг в Rocket League : <strong>{{ user.rocket }}</strong></p>
+                  </div>
+              </div>
+              <h3><strong>Найти тиммейта: </strong></h3>
+              <div class="row">
+                  <div class="col-md-4">
+                      <a class="btn btn-lg btn-outline-danger" role="button" href='/users/dota2'> Dota 2 </a>
+                  </div>
+                  <div class="col-md-4">
+                      <a class="btn btn-lg btn-outline-warning" role="button" href='/users/cs'> CS:GO </a>
+                  </div>
+                  <div class="col-md-4">
+                      <a class="btn btn-lg btn-outline-primary" role="button" href='/users/rocket'> Rocket League </a>
+                  </div>
+              </div>
+
+              {% for user in users %}
+                    <h2><a class="text-primary" href="{{ url_for('user', id=user.id) }}">{{ user.login }}</a></h2>
+                    <p>
+                        {{ user.rocket }}
+                    </p>
+                <br>
+                {% endfor %}
+
+          </div>
+        </div>
+    </div>
+{% endblock %}

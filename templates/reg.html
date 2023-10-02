@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %} Регистрация {% endblock %}
+
+{% block content %}
+    <div class="jumbotron container">
+        <h2> Регистрация </h2>
+        <p>
+            Введите свои данные чтобы зарегистрироваться.<a href="/login">У Вас уже есть аккаунт?</a>
+        </p>
+
+        {% if error %}
+            <br>
+            <div class="alert alert-danger" role="alert">{{ error_text }}</div>
+        {% endif %}
+
+        <form action="/reg" method="POST" name="registration">
+            {{ form.hidden_tag() }}
+
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="login"> Логин </label>
+                        {{ form.login(class_='form-control input-lg', placeholder='Логин', id='login', type='text') }}
+                        {% for error in form.errors.login %}
+                            <br>
+                            <div class="alert alert-danger" role="alert">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="vk"> ID личной страницы вк </label>
+                        {{ form.vk(class_='form-control input-lg', placeholder='vk', id='vk', type='text') }}
+                        {% for error in form.errors.login %}
+                            <br>
+                            <div class="alert alert-danger" role="alert">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="password"> Пароль </label>
+                        {{ form.password(class_='form-control input-lg', placeholder='********', id='password', type='password') }}
+                        {% for error in form.errors.password %}
+                            <br>
+                            <div class="alert alert-danger" role="alert">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm"> Подтвердите пароль </label>
+                        {{ form.confirmpass(class_='form-control input-lg', placeholder='********', id='confirm', type='password') }}
+                        {% for error in form.errors.confirmpass %}
+                            <br>
+                            <div class="alert alert-danger" role="alert">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <input type="submit" value="Зарегистрироваться" class="btn btn-primary btn-lg">
+                </div>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

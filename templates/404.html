@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %} Ой! {% endblock %}
+
+{% block content %}
+
+    <div class="jumbotron container">
+        <img src="https://image.shutterstock.com/image-vector/404-not-found-problem-disconnect-600w-721322569.jpg" >
+      <h2> Что-то пошло не так </h2>
+      <p>
+          Вы немного заблудились и попали туда, где ничего нет. Кажется, Вам надо найти немного другую дорогу
+          или написать нам в поддержку.
+      </p>
+      {% if session['logged_in'] %}
+        <p>
+            <a class="btn btn-warning btn-lg" href="/"> Главная </a>
+            <a class="btn btn-primary btn-lg" href="/account" role="button"> {{ session['username'] }} </a>
+        </p>
+      {% else %}
+        <p>
+            <a class="btn btn-success btn-lg" href="/"> Главная </a>
+            <a class="btn btn-primary btn-lg" href="/login" role="button"> Войти </a>
+        </p>
+      {% endif %}
+    </div>
+
+{% endblock %}

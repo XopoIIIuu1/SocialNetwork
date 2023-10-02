@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} Пользователь {% endblock %}
+
+{% block content %}
+    <div class="jumbotron container">
+        <h1> Пользователь <a class="text-success"> {{ user.login }}</a></h1>
+        <p>
+            Это страница пользователя <strong>{{ user.login }}</strong>. Вы можете написать ему - <a href="{{ 'https://vk.com/%s'%user.vk }}"><i class="fab fa-vk fa-2x"></i></a>
+        </p>
+        <div class="row">
+                  <div class="col-md-6">
+                      <p> Ранг в Dota2 : <strong>{{ user.dota2 }}</strong></p>
+                      <p> Ранг в CS:GO : <strong>{{ user.csgo }}</strong></p>
+                      <p> Ранг в Rocket League : <strong>{{ user.rocket }}</strong></p>
+                  </div>
+              </div>
+    </div>
+
+
+{% endblock %}

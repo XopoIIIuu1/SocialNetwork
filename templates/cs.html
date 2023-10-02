@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %} CS : GO {% endblock %}
+
+{% block content %}
+    <div class="row container">
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
+        {% if session['logged_in'] %}
+        <div class="col-md-8 jumbotron">
+            <p>
+                Ваш нынешний ранг: <strong>{{ user.csgo }}</strong>
+            </p>
+            {% if error %}
+                <br>
+                <div class="alert alert-danger" role="alert">{{ error_text }}</div>
+            {% elif success %}
+                <br>
+                <div class="alert alert-success" role="alert">{{ success_text }}</div>
+            {% endif %}
+            <form action="/change/cs" method="POST" name="change-cs">
+                {{ form.hidden_tag() }}
+
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="InputNewRank"> Измененный ранг </label>
+                        {{ form.newrank(id='InputNewRank') }}
+                    </div>
+                    <div class="form-group">
+                        <label for="password"> Ваш пароль </label>
+                        {{ form.password(class_='form-control input-lg', placeholder='********', id='password', type='password') }}
+                        {% for error in form.errors.password %}
+                            <br>
+                            <div class="alert alert-danger" role="alert">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <input type="submit" value="Изменить" class="btn btn-primary btn-lg">
+                </div>
+            </div>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

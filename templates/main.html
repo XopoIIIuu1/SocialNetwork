@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %} Главная {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card-group">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="/static/d3.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Dota 2</h5>
+                <p class="card-text">Введи свой MMR  и найди себе тиммейтов, ну реально, подними свой MMR!</p>
+                <a href="/users/dota2" class="btn btn-primary">Стань Miracle</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="/static/r2.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Rocket League</h5>
+                <p class="card-text">Введи свой ранг(от 1 до 16 ) и вперёд разносить врагов.</p>
+                <a href="/users/rocket" class="btn btn-primary">По машинам!</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="/static/cs2.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Counter-Strike: Global Offensive</h5>
+                <p class="card-text">Введи своё звание и найди наконец-то друзей,и подними звание.</p>
+                <a href="/users/cs" class="btn btn-primary">Rush B</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

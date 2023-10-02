@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %} {{game.name}} {% endblock %}
+
+{% block content %}
+<div class="container">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: {{game.count}}%"  aria-valuemin="0" aria-valuemax="100">{{ game.count }}</div>
+        </div>
+    <h3> {{ game.count }} игроков подписалось ( необходимо: 100 )</h3>
+    </div>
+<br>
+    <div class="jumbotron">
+
+        <div class="row">
+            <div class="col-md-1"></div>
+
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ game.img }}" class="card-img-top">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2 class="text-primary"> <strong>{{ game.name }}</strong></h2>
+                <p>
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Описание игры
+                    </a>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                    {{ game.des }}
+                    </div>
+                </div>
+                <br>
+                <br>
+                <form action="/allgames/{{game.name}}" method="POST" name="like">
+                    {{ form.hidden_tag() }}
+                    <input type="submit" value="Подписаться на игру" class="btn btn-lg btn-success">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
